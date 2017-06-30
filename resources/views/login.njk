@@ -1,0 +1,62 @@
+{% extends 'master' %}
+{% block content %}
+<div class="main pusher dimmer">
+    <div class="ui grid">
+        <div class="six wide centered column">
+            <!-- End Of Header -->
+            <h2 class="ui header green">Login</h2>
+            <section id="loginForm">
+                <form method="post" action="" class="ui form" role="form">
+                    <h4 class="ui dividing header blue">Login using site credentials</h4>
+                    <div class="ui negative message" style="display: none;" id="errorBox">
+                        <div class="header">Username and/or password is incorrect.</div>
+                    </div>
+                    <div class="ui piled segment">
+                        <div class="field required">
+                            <label>Username</label>
+                            <div class="ui icon input">
+                                <input type="text" name="user" placeholder="" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field required">
+                            <label>Password</label>
+                            <div class="ui icon input">
+                                <input type="password" name="pass" placeholder="******" />
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="Remember Me" />
+                                <label>Remember me</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui buttons">
+                        <input type="submit" value="Login" class="ui positive button" />
+                        {#<div class="or"></div>#}
+                        {#<a href="/" class="ui button" >Cancel</a>#}
+                    </div>
+                    <p>
+                        <a href="/register">Register</a> if you don't have an account
+                    </p>
+                </form>
+                {#<div class="ui loading segment">#}
+                    {#<section id="socialLoginForm">#}
+                        {#<h4 class="ui dividing red header">Use another login provider</h4>#}
+                        {#<div id="socialLoginList">#}
+                            {#<p>#}
+                                {#<button type="submit" class="ui google plus button" id="google" name="provider" value="google" title="ورود با استفاده از حساب گوگل"><i class="icon google"></i>Google</button>#}
+                                {#<button type="submit" class="ui instagram button" id="instagram" name="provider" value="instagram" title="ورود با استفاده از حساب اینستاگرام"><i class="icon instagram"></i>Instagram</button>#}
+                                {#<button type="submit" class="ui facebook button" id="facebook" name="provider" value="facebook" title="ورود با استفاده از حساب فیسبوک"><i class="icon facebook"></i>Facebook</button>#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</section>#}
+                {#</div>#}
+            </section>
+            <!-- Begin Of Footer -->
+        </div>
+    </div>
+</div>
+{% endblock %}

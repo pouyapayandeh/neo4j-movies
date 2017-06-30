@@ -1,0 +1,128 @@
+{% extends 'master' %}
+{% block content %}
+<div class="main pusher dimmer">
+    <div class="ui grid">
+        <div class="eight wide centered column">
+            <div class="ui small form">
+                <form id="registerForm" method="post">
+                    <h2 class="ui centered dividing blue header">Register</h2>
+
+                    <div class="ui negative message" style="display: none;" id="errorBox">
+                        <div class="header">Incorrect values in register form.</div>
+                    </div>
+
+                    <div class="ui piled segment">
+                        <h3 class="ui centered dividing green header">Account Info</h3>
+
+                        <div class="two fields">
+                            <div class="required field">
+                                <label>Username</label>
+                                <input placeholder="hamidrezashr@gmail.com" type="text" name="user">
+                            </div>
+                            {#<div class="required field">#}
+                                {#<label>Phone Number</label>#}
+                                {#<input placeholder="+989186300800" type="text" name="phoneNumber">#}
+                            {#</div>#}
+                        </div>
+                        <div class="two fields">
+                            <div class="required field">
+                                <label>Password</label>
+                                <input placeholder="******" type="password" name="pass">
+                            </div>
+                            {#<div class="required field">#}
+                                {#<label>Confirm password</label>#}
+                                {#<input placeholder="******" type="password" name="confirmPassword">#}
+                            {#</div>#}
+                        </div>
+
+                    </div>
+
+                    {#<div class="ui piled segment">#}
+                        {#<h3 class="ui centered dividing orange header">Personal Info</h3>#}
+
+                        {#<div class="two fields">#}
+                            {#<div class="required field">#}
+                                {#<label>Firstname</label>#}
+                                {#<input placeholder="Taha" type="text" name="firstName">#}
+                            {#</div>#}
+                            {#<div class="required field">#}
+                                {#<label>Lastname</label>#}
+                                {#<input placeholder="Eghtesad" type="text" name="lastName">#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="three fields">#}
+                            {#<div class="field">#}
+                                {#<label>Birthday</label>#}
+                                {#<input type="date" name="birthday">#}
+                            {#</div>#}
+                            {#<div class="field">#}
+                                {#<label>Providence</label>#}
+                                {#<div class="ui fluid selection dropdown">#}
+                                    {#<input type="hidden" name="providence">#}
+                                    {#<i class="dropdown icon"></i>#}
+                                    {#<div class="default text">Providence</div>#}
+                                    {#<div class="menu">#}
+                                        {#<div class="item" data-value="AS">AS</div>#}
+                                        {#<div class="item" data-value="AQ">AQ</div>#}
+                                        {#<div class="item" data-value="Ardebil">Ardebil</div>#}
+                                        {#<div class="item" data-value="Esfahan">Esfahan</div>#}
+                                        {#<div class="item" data-value="Alborz">Alborz</div>#}
+                                        {#<div class="item" data-value="Ilam">Ilam</div>#}
+                                        {#<div class="item" data-value="Bushehr">Bushehr</div>#}
+                                        {#<div class="item" data-value="Tehran">Tehran</div>#}
+                                        {#<div class="item" data-value="Bakhtiari">Bakhtiari</div>#}
+                                        {#<div class="item" data-value="KhJonubi">KJ</div>#}
+                                        {#<div class="item" data-value="KhRazavi">KR</div>#}
+                                        {#<div class="item" data-value="KhShomali">KS</div>#}
+                                        {#<div class="item" data-value="Khuzestan">Khuzestan</div>#}
+                                        {#<div class="item" data-value="Zanjan">Zanjan</div>#}
+                                        {#<div class="item" data-value="Semnan">Semnan</div>#}
+                                        {#<div class="item" data-value="Sistan">Sistan</div>#}
+                                        {#<div class="item" data-value="Fars">Fars</div>#}
+                                        {#<div class="item" data-value="Ghazvin">Ghazvin</div>#}
+                                        {#<div class="item" data-value="Ghom">Ghom</div>#}
+                                        {#<div class="item" data-value="Kordestan">Kordestan</div>#}
+                                        {#<div class="item" data-value="Kerman">Keramn</div>#}
+                                        {#<div class="item" data-value="Kermanshah">Kermanshah</div>#}
+                                        {#<div class="item" data-value="Kohkiluye">Kohkiluye</div>#}
+                                        {#<div class="item" data-value="Golestan">Golestan</div>#}
+                                        {#<div class="item" data-value="Gilan">Gilan</div>#}
+                                        {#<div class="item" data-value="Lorestan">Lorestan</div>#}
+                                        {#<div class="item" data-value="Mazandaran">Mazandaran</div>#}
+                                        {#<div class="item" data-value="Markazi">Markazi</div>#}
+                                        {#<div class="item" data-value="Hormozgan">Hormozgan</div>#}
+                                        {#<div class="item" data-value="Hamedan">Hamadan</div>#}
+                                        {#<div class="item" data-value="Yazd">Yazd</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div class="field">#}
+                                {#<label>Sex</label>#}
+                                {#<div class="ui form">#}
+                                    {#<div class="inline centered fields">#}
+                                        {#<div class="field">#}
+                                            {#<div class="ui radio checkbox">#}
+                                                {#<input type="radio" name="sex" checked="checked" value="Male">#}
+                                                {#<label>Male</label>#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<!--<div class="field">-->#}
+                                        {#<!--<div class="ui radio checkbox">-->#}
+                                        {#<!--<input type="radio" name="sex" value="Female">-->#}
+                                        {#<!--<label>Female</label>-->#}
+                                        {#<!--</div>-->#}
+                                        {#<!--</div>-->#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+
+                    {#</div>#}
+
+                    <input type="submit" value="Register" class="ui centered blue submit button" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
