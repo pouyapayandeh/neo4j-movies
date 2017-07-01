@@ -6,7 +6,7 @@ var _ = require('lodash');
 var dbUtils = require('../neo4j/dbUtils');
 var crypto = require('crypto');
 var md5 = require('md5');
-
+const Movie = use('App/Model/Movie')
 function hashPassword(username, password) {
   var s = username + ':' + password;
   return crypto.createHash('sha256').update(s).digest('hex');
@@ -78,12 +78,49 @@ class User {
   };
   static allUser()
   {
+    var session = dbUtils.getSession();
     return session
       .run('MATCH (user:User) RETURN user')
       .then(r =>r.records.map(r => new User(r.get('user'))));
   }
-
-
+  static befriend (userId1, userId2) {
+    if(userId1 == userId2)
+      throw error('cant be friend with my self')
+    var session = dbUtils.getSession();
+    return session.run(
+      'MATCH (u1:User {id: {userId1}}),(u2:User {id: {userId2}}) \
+      MERGE (u1)-[r:FRIEND]->(u2) \
+      RETURN u1',
+      {
+        userId1: userId1,
+        userId2: userId2,
+      }
+    );
+  };
+  static addMovie (userId,movieId) {
+    var session = dbUtils.getSession();
+    return session.run(
+      'MATCH (u:User {id: {userId}}),(m:Movie {id: {movieId}}) \
+      MERGE (u)-[r:MY_MOVIE]->(m) \
+      RETURN m',
+      {
+        userId: userId,
+        movieId: parseInt(movieId),
+      }
+    );
+  };
+  static myMovie (userId) {
+    var session = dbUtils.getSession();
+    return session
+      .run('MATCH (user:User {id: {userId}})-[r:MY_MOVIE]->(m:Movie) RETURN m',{userId:userId})
+      .then(r =>r.records.map(r => new Movie(r.get('m'))));
+  };
+  static friends (userId) {
+    var session = dbUtils.getSession();
+    return session
+      .run('MATCH (user:User {id: {userId}})-[r:FRIEND]->(u:User) RETURN u',{userId:userId})
+      .then(r =>r.records.map(r => new User(r.get('u'))));
+  };
 
 }
 

@@ -219,7 +219,8 @@ class Movie {
     );
   };
 
-  static getRatedByUser(session, userId) {
+  static getRatedByUser( userId) {
+    var session = dbUtils.getSession();
     return session.run(
       'MATCH (:User {id: {userId}})-[rated:RATED]->(movie:Movie) \
        RETURN DISTINCT movie, rated.rating as my_rating',
@@ -228,7 +229,6 @@ class Movie {
       return result.records.map(r => new Movie(r.get('movie'), r.get('my_rating')))
     });
   };
-
   static getRecommended (session, userId) {
     return session.run(
       'MATCH (me:User {id: {userId}})-[my:RATED]->(m:Movie) \

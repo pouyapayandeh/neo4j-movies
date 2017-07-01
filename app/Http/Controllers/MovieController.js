@@ -32,6 +32,7 @@ class MovieController {
     let movie  = yield Movie.rate(id,request.user.id,rate.rate);
     yield this.detail(request , response)
   }
+
   * search(request , response)
   {
     const data = request.only('title');

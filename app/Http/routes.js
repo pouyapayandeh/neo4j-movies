@@ -26,6 +26,7 @@ Route.post('register', 'UserController.register')
 Route.get('/movies', 'MovieController.list');
 // Route.get('/movies/:id', 'MovieController.detail');
 Route.get('/users', 'UserController.index');
+
 //Product
 Route.group('auth-routes',() =>
 {
@@ -36,5 +37,9 @@ Route.group('auth-routes',() =>
   Route.get('/product/delete/:id','ProductController.delete');
   Route.get('/movies/:id', 'MovieController.detail');
   Route.post('/movies/:id/rate', 'MovieController.rate');
+  Route.get('/movies/:id/add', 'UserController.addMovie');
+  Route.get('/users/:id/add', 'UserController.befriend');
+  Route.get('/friends', 'UserController.myFriends');
+  Route.get('/profile', 'UserController.profile');
 }).middleware('myAuth');
 
