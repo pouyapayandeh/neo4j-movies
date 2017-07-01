@@ -49,7 +49,8 @@ class User {
       });
   };
 
-  static me(session, apiKey) {
+  static me(apiKey) {
+    var session = dbUtils.getSession();
     return session.run('MATCH (user:User {api_key: {api_key}}) RETURN user', {api_key: apiKey})
       .then(results => {
         if (_.isEmpty(results.records)) {
@@ -75,6 +76,13 @@ class User {
         }
       );
   };
+  static allUser()
+  {
+
+    return session
+      .run('MATCH (user:User) RETURN user')
+      .then(r =>r.records.map(r => new User(r.get('user'))));
+  }
 
 
 

@@ -25,6 +25,10 @@ exports.getSession = function (context) {
   }
 };
 
+exports.getSession = function () {
+    return driver.session();
+};
+
 exports.dbWhere = function (name, keys) {
   if (_.isArray(name)) {
     _.map(name, (obj) => {

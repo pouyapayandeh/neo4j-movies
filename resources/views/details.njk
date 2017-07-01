@@ -1,0 +1,73 @@
+{% extends 'master' %}
+{% block content %}
+<!--Your code goes here-->
+<div class="ui vertical part" style="margin-top: 20px">
+    <div class="ui center aligned container">
+        <div class="ui internally celled grid">
+
+            <div class="wide column">
+                <div class="ui grid divided stackable">
+                    <div class="twelve wide column">
+                        <h2 class="ui header centered">{{ movie.title }}</h2>
+
+                        <table class="ui green table">
+                            <tr>
+                                <td>Name</td>
+                                <td>{{ movie.title }}</td>
+                            </tr>
+                            {% for director in movie.directors %}
+                            <tr>
+                                <td>Director</td>
+                                <td>{{ director.name }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>summary</td>
+                                <td>{{ movie.summary }}</td>
+                            </tr>
+                          {% for writer in movie.writers %}
+                            <tr>
+                              <td>writer</td>
+                              <td>{{ writer.name }}</td>
+                            </tr>
+                          {% endfor %}
+                            <tr>
+                                <td>Genre</td>
+                                <td>
+                                  {% for genre in movie.genres %}
+                                     <span class="ui label">{{ genre.name }}</span>
+                                  {% endfor %}
+                                </td>
+                            </tr>
+
+                          {% for actor in movie.actors %}
+                            <tr>
+                              <td>{{ actor.role[0]}}</td>
+                              <td>{{ actor.name }}</td>
+                            </tr>
+                          {% endfor %}
+                        </table>
+                    </div>
+                    <div class="four wide column">
+                        <img class="ui medium rounded image" src="{{ movie.poster_image }}" />
+
+                        <h4 class="ui header centered">Overall Rate:</h4>
+                        <div class="read-only"><div class="ui heart rating" data-rating="1" data-max-rating="5"></div></div>
+
+                        <h4 class="ui header centered">Your Rate:</h4>
+                        <div class="ui huge star rating" data-rating="1" data-max-rating="5">
+
+                    </div>
+                        <div style="margin-top: 20px"> <button class="ui positive button">
+                            <i class="icon add"></i>
+                            Add to My Movies
+                        </button></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

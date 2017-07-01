@@ -1,0 +1,95 @@
+{% extends 'master' %}
+{% block content %}
+
+<div class="ui container">
+    <div class="ui green eight item menu stackable" id="specialMenu">
+        <a href="index.html" class="active item">Home</a>
+        <a href="add-friend.html" class="item">Users</a>
+        <a href="search.html" class="item">Search</a>
+        <a href="user_profile.html" class="item">My Profile</a>
+        <a href="admin-panel.html" class="item">Add Movie</a>
+    </div>
+</div>
+
+<div class="ui vertical part divided" style="margin-top: 50px">
+    <div class="ui  center aligned container">
+        <div class="ui grid doubling">
+
+            <div class="four wide column ">
+                <div class="ui left aligned doubling stackable container">
+                    <div class="ui large divided vertical stackable menu" id="catMenu">
+                        <h3 class="ui  header item">
+Categories
+                        </h3>
+                        <div class="item">
+                            <div class="header">Genre</div>
+                            <div class="menu">
+                                <a class="item">Comedy</a>
+                                <a class="item">Drama</a>
+                                <a class="item">Action</a>
+                                <a class="item">Sci-Fi</a>
+                                <a class="item">Horror</a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="header">Release Year</div>
+                            <div class="menu">
+                                <a class="item">2017</a>
+                                <a class="item">2016</a>
+                                <a class="item">2015</a>
+                                <a class="item">2014</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="twelve wide column">
+
+                <div class="ui top attached tabular menu" id="tabs">
+                    <a class="item active" data-tab="first">Newest</a>
+                    <a class="item " data-tab="second">5 Most Rated Movies</a>
+                    <a class="item" data-tab="third">Most Rated Series</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="first">
+                    <div class="ui four cards stackable book-placeholder">
+                      {% for movie in movies %}
+                        <div class="card">
+                            <div class="image">
+                                <img class="ui image" src="{{ movie.poster_image }}">
+                            </div>
+                            <div class="content" style="overflow: hidden">
+                                <a href="/movies/{{ movie.id }}">
+                                    <h3 class="ui header">
+                                        {{ movie.title }}
+                                    </h3>
+                                </a>
+                            </div>
+                            <div class="extra content">
+                                <div class="ui  large center ">
+                                    <h3 class="ui red header">
+                                      Rated:
+                                      {{ movie.rated }}
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    <div class="ui pagination menu " style="margin-top: 30px">
+                    </div>
+                </div>
+                <div class="ui bottom attached tab segment " data-tab="second">
+                    <div class="ui four cards stackable book-placeholder"></div>
+                    <div class="ui pagination menu " style="margin-top: 30px"></div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="third">
+                    <div class="ui four cards stackable book-placeholder"></div>
+                    <div class="ui pagination menu " style="margin-top: 30px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

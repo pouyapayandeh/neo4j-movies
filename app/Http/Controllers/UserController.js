@@ -7,6 +7,7 @@ class UserController {
     console.log(b);
     try {
       const user = yield User.login(dbUtils.getSession(request), b.user, b.pass);
+      request.session.put('api_key',user.token);
       console.log(user);
     } catch (e) {
       response.status(400).send('Invalid credentials');
@@ -32,9 +33,14 @@ class UserController {
   }
 
   *logout(request, response) {
-    yield request.session.forget('role');
+    yield request.session.forget('api_key');
     yield response.redirect('login')
-
+  }
+  * index(request, response)
+  {
+    let users = yield User.allUser();
+    yield response.sendView('add-friend', {users:users});
+    // response.json(users);
   }
 }
 

@@ -8,7 +8,7 @@
 
   <!-- Site Properties -->
   <title>Login - KetabMetab</title>
-  <link rel="stylesheet" type="text/css" href="lib/semantic/dist/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/lib/semantic/dist/semantic.min.css">
 
   <style>
     #catMenu a {
@@ -20,9 +20,9 @@
     }
   </style>
 
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-  <script src="lib/semantic/dist/semantic.min.js"></script>
-  <script src="scripts/jquery.cookie.js"></script>
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
+  <script src="/lib/semantic/dist/semantic.min.js"></script>
+  <script src="/scripts/jquery.cookie.js"></script>
 
 
 </head>
@@ -110,6 +110,11 @@
   $(document).ready(function () {
     $('#tabs .item')
       .tab();
+  });
+  $(document).ready(function () {
+    $('.special.cards .image').dimmer({
+      on: 'hover'
+    });
   });
 
 </script>

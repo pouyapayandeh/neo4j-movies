@@ -22,6 +22,10 @@ Route.on('login').render('login')
 Route.post('login', 'UserController.login')
 Route.on('register').render('register')
 Route.post('register', 'UserController.register')
+
+Route.get('/movies', 'MovieController.list');
+Route.get('/movies/:id', 'MovieController.detail');
+Route.get('/users', 'UserController.index');
 //Product
 Route.group('auth-routes',() =>
 {
