@@ -21,6 +21,7 @@ Route.on('/').render('welcome')
 Route.on('login').render('login')
 Route.post('login', 'UserController.login')
 Route.on('register').render('register')
+Route.on('news').render('news')
 Route.post('register', 'UserController.register')
 
 Route.get('/movies', 'MovieController.list');

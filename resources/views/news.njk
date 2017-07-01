@@ -1,0 +1,51 @@
+{% extends 'master' %}
+{% block content %}
+  <script>
+    $(document).ready(function () {
+      // All your normal JS code goes in here
+      $(".rating").rating();
+      $('.read-only .rating')
+        .rating('disable')
+      ;
+    });
+
+
+  </script>
+  <!--Your code goes here-->
+  <div class="ui vertical part" style="margin-top: 20px">
+    <div class="ui center aligned container">
+      <div class="ui internally celled grid">
+
+        <div class="wide column">
+          <div class="ui grid divided stackable">
+            <div class="twelve wide column">
+              <h2 class="ui header centered">News</h2>
+
+              <div class="ui list">
+                <div class="item">
+                  <div class="header">New York City</div>
+                  A lovely city
+                </div>
+                <div class="item">
+                  <div class="header">Chicago</div>
+                  Also quite a lovely city
+                </div>
+                <div class="item">
+                  <div class="header">Los Angeles</div>
+                  Sometimes can be a lovely city
+                </div>
+                <div class="item">
+                  <div class="header">San Francisco</div>
+                  What a lovely city
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
