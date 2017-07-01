@@ -78,7 +78,6 @@ class User {
   };
   static allUser()
   {
-
     return session
       .run('MATCH (user:User) RETURN user')
       .then(r =>r.records.map(r => new User(r.get('user'))));

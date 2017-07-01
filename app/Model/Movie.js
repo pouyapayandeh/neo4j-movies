@@ -143,7 +143,7 @@ class Movie {
       'WHERE movie.title =~ \'.*'+title+'.*\'',
       'RETURN movie'
     ].join('\n');
-    console.log(query);
+    // console.log(query);
     return session.run(query, {
       title: title,
     }).then(result => Movie.manyMovies(result))
@@ -197,7 +197,8 @@ class Movie {
     }).then(result => manyMovies(result));
   };
 
-  static rate (session, movieId, userId, rating) {
+  static rate (movieId, userId, rating) {
+    var session = dbUtils.getSession();
     return session.run(
       'MATCH (u:User {id: {userId}}),(m:Movie {id: {movieId}}) \
       MERGE (u)-[r:RATED]->(m) \

@@ -1,0 +1,81 @@
+{% extends 'master' %}
+{% block content %}
+  <div class="ui vertical part" style="margin-top: 20px">
+    <div class="ui  center aligned container">
+      <div class="ui grid stackable">
+
+        <div class="four wide column">
+          <div class="ui  large divided vertical menu" id="filter_by_genre">
+            <h3 class="ui header item">
+              Filter By Genre
+            </h3>
+            <a class="item" data-value="All">All</a>
+            <a class="item" data-value="Comedy">Comedy</a>
+            <a class="item" data-value="Drama">Drama</a>
+            <a class="item" data-value="Action">Action</a>
+            <a class="item" data-value="Sci-fi">Sci-Fi</a>
+            <a class="item" data-value="Horror">Horror</a>
+          </div>
+          <div class="ui  large divided vertical menu" id="catMenu">
+            <h3 class="ui header item">
+              Filter By Year
+            </h3>
+            <div class="ui fluid search selection dropdown">
+              <input type="hidden" name="year" id="year">
+              <i class="dropdown icon"></i>
+              <div class="default text">Select Year</div>
+              <div class="menu">
+                <div class="item" data-value="2017">2017</div>
+                <div class="item" data-value="2016">2016</div>
+                <div class="item" data-value="2015">2015</div>
+                <div class="item" data-value="2014">2014</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="eleven wide column" style="margin-left: 40px">
+          <div class="seven wide column">
+            <div class="ui fluid action input">
+              <form action="/movies" method="get">
+                <input type="text" placeholder="Search By Title, Director, Writer or actors ..." name="title">
+                <button class="ui green button">Search</button>
+              </form>
+            </div>
+          </div>
+
+          </br>
+          <div class="ui four cards stackable">
+            {% for movie in movies %}
+            <div class="card">
+              <div class="image">
+                <img class="ui image" src=" {{ movie.poster_image }}">
+              </div>
+              <div class="content" style="overflow: hidden">
+                <a href="/movies/{{ movie.id }}/">
+                  <h3 class="ui header">
+                    {{ movie.title }}
+                  </h3>
+                </a>
+              </div>
+              <div class="extra content">
+                <div class="ui  large center ">
+                  <h3 class="ui red header">
+                    movie genre
+                  </h3>
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="ui pagination menu " style="margin-top: 30px">
+            </div>
+          </div>
+          <div class="ui pagination menu " style="margin-top: 30px">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

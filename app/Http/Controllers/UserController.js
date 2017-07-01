@@ -7,7 +7,7 @@ class UserController {
     console.log(b);
     try {
       const user = yield User.login(dbUtils.getSession(request), b.user, b.pass);
-      request.session.put('api_key',user.token);
+     yield  request.session.put('api_key',user.token);
       console.log(user);
     } catch (e) {
       response.status(400).send('Invalid credentials');

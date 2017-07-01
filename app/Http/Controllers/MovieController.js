@@ -19,15 +19,25 @@ class MovieController {
   * detail(request , response)
   {
     const id = request.param('id');
-    let movie  = yield Movie.getById(dbUtils.getSession(request),id,0);
+    let movie  = yield Movie.getById(dbUtils.getSession(request),id,request.user.id);
+    console.log(movie);
     yield response.sendView('details', {movie:movie});
+  }
+
+  * rate(request , response)
+  {
+    const id = request.param('id');
+    const rate = request.only('rate');
+    console.log(request.user.id);
+    let movie  = yield Movie.rate(id,request.user.id,rate.rate);
+    yield this.detail(request , response)
   }
   * search(request , response)
   {
     const data = request.only('title');
     let movies  = yield Movie.getByName(data.title);
-    response.json(movies)
-    // yield response.sendView('details', {movie:movie});
+    // response.json(movies)
+    yield response.sendView('search', {movies:movies});
   }
   //
   // * register(request, response) {
